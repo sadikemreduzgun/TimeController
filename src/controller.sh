@@ -70,7 +70,7 @@ do
         done
 
 	# when it is ended
-       	if [ $bool -eq ]
+       	if [ $bool -eq 1 ]
 	then
         	
         	echo there is no $software opened! 
