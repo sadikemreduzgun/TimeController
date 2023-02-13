@@ -10,6 +10,10 @@ control_time=15
 # determine which software is goning to be checked
 software=firefox
 
+# booleans to stop it from givin info one-by another
+bool=1
+bool2=1
+
 while [ 1 ]
 do
 
@@ -26,13 +30,17 @@ do
         pId=$(ps aux | grep $software | awk '{print $2}')
         let "pId=$(echo $pId | head -c 4)"
 
-        # write if it is working
-        echo running...
-        echo don\'t close.
-
         # run while firefox is open
         while [ $(pgrep $software) ]
         do
+		# write if it is working
+		if [ $bool2 ]
+		then
+			echo running...
+			echo don\'t close.
+			bool2=0
+
+		fi
                 # get current time
                 current_time=$(date +%H:%M)
 
@@ -52,6 +60,7 @@ do
                         if [ $minute -gt $max_minute ]
                         then
                                 kill $pId
+				bool=1
                         fi
 
                 fi
@@ -59,9 +68,15 @@ do
                 # while loop will be run in every determined seconds
                 sleep $control_time
         done
-       
-        # when it is ended
-        echo there is no $software opened! 
-        sleep $control_time * 8
-done
 
+	# when it is ended
+       	if [ $bool ]
+	then
+        	
+        	echo there is no $software opened! 
+		bool=0
+	fi
+
+	# sleep it to stop it eating memory
+        sleep $control_time
+done
