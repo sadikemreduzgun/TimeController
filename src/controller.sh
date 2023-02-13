@@ -59,7 +59,9 @@ do
                 # while loop will be run in every determined seconds
                 sleep $control_time
         done
+       
+        # when it is ended
+        echo there is no $software opened! 
+        sleep $control_time * 8
 done
 
-# when it is ended
-echo there is no $software opened!
