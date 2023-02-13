@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 # determine max hour
 max_hour=1
@@ -26,7 +26,7 @@ do
 
         # get elapsed time (minute, hour)
         let "minute=($(echo $current_time | tail -c 3) - $(echo $start_time | tail -c 3))"
-        let "hour=($(echo $current_time | head -c 2) - $(echo $start_time | head -c 2)"
+        let "hour=($(echo $current_time | head -c 2) - $(echo $start_time | head -c 2))"
 
         # if it is more than 1 hour kill process
         if [ $hour -gt $max_hour ]
@@ -34,7 +34,7 @@ do
                 kill $pId
 
         fi
-       
+
         if [ $hour -eq $max_hour ]
         then
                 if [ $minute -gt $max_minute ]
@@ -43,7 +43,7 @@ do
                 fi
 
         fi
-        
+
         # while loop will be run in every determined seconds
         sleep $control_time
 done
