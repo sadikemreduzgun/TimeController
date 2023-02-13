@@ -20,7 +20,7 @@ let "pId=$(echo $pId | head -c 4)"
 
 # write if it is working
 echo running...
-echo don't close.
+echo don\'t close.
 
 # run while firefox is open
 while [ $(pgrep firefox) ]
