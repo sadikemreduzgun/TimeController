@@ -34,7 +34,7 @@ do
         while [ $(pgrep $software) ]
         do
 		# write if it is working
-		if [ $bool2 ]
+		if [ $bool2 -eq 1 ]
 		then
 			echo running...
 			echo don\'t close.
@@ -70,7 +70,7 @@ do
         done
 
 	# when it is ended
-       	if [ $bool ]
+       	if [ $bool -eq ]
 	then
         	
         	echo there is no $software opened! 
