@@ -1,23 +1,29 @@
 #!/bin/bash
 
+# assign max time variables
+max_hour=1
+max_minute=0
+
+# assign checking time
+control_time=15
+
+# determine which software is goning to be checked
+software=firefox
+
 while [ 1 ]
 do
-        # determine max hour
-        max_hour=1
-        max_minute=0
-        control_time=15
 
         # delete all in txt file
         sed "" "../data/keep.txt" > "../data/keep.txt"
 
         # get the date when software is opened write it into a txt file
-        ps aux | grep firefox | awk '{print $9}'>>../data/keep.txt
+        ps aux | grep $software | awk '{print $9}'>>../data/keep.txt
 
         # run python file and get printed date data 
         start_time=$(python3 inter.py)
 
         # get process id
-        pId=$(ps aux | grep firefox | awk '{print $2}')
+        pId=$(ps aux | grep $software | awk '{print $2}')
         let "pId=$(echo $pId | head -c 4)"
 
         # write if it is working
@@ -25,7 +31,7 @@ do
         echo don\'t close.
 
         # run while firefox is open
-        while [ $(pgrep firefox) ]
+        while [ $(pgrep $software) ]
         do
                 # get current time
                 current_time=$(date +%H:%M)
@@ -56,4 +62,4 @@ do
 done
 
 # when it is ended
-echo there is no firefox opened!
+echo there is no $software opened!
