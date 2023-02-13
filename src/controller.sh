@@ -18,6 +18,10 @@ start_time=$(python3 inter.py)
 pId=$(ps aux | grep firefox | awk '{print $2}')
 let "pId=$(echo $pId | head -c 4)"
 
+# write if it is working
+echo running...
+echo don't close.
+
 # run while firefox is open
 while [ $(pgrep firefox) ]
 do
@@ -47,3 +51,6 @@ do
         # while loop will be run in every determined seconds
         sleep $control_time
 done
+
+# when it is ended
+echo there is no firefox opened!
