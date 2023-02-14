@@ -1,18 +1,21 @@
 #!/bin/bash
 
+# get variables in vars
+. ./vars.sh
+
 # assign max time variables
-max_hour=1
-max_minute=0
+max_hour=$max_hour
+max_minute=$max_minute
 
 # assign checking time
-control_time=15
+control_time=$control_time
 
 # determine which software is goning to be checked
-software=firefox
+software=$software
 
 # booleans to stop it from givin info one-by another
-bool=1
-bool2=1
+bool=$bool
+bool2=$bool2
 
 while [ 1 ]
 do
