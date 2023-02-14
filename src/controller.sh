@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # get variables in vars
-. ./vars.sh
+. ./settings.sh
 
 # assign max time variables
 max_hour=$max_hour
