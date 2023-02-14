@@ -7,8 +7,10 @@ sudo chmod +x /etc/rc.local
 # get actual username not "root".
 user=$(python3 get_user.py)
 
-# to expand variables
-sudo chmod +x vars.sh
 sudo echo "/home/$user/Downloads/StartScript.sh &" > /etc/rc.local
 
+# to expand variables
+sudo chmod +x settings.sh
+
+# to run
 sudo bash controller.sh
